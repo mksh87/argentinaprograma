@@ -1,0 +1,15 @@
+let x=5;
+let y=7;
+let z=9;
+let promedio=(x+y+z)/3;
+console.log("a) El promedio de "+x+" "+y+" y "+z+" es de "+promedio);
+console.log(" ");
+x=-2;
+y=-3;
+z=-8;
+console.log("b) El promedio de "+x+" "+y+" y "+z+" es de "+promedio);
+console.log(" ");
+x=-1.2;
+y=5.3;
+z=-3.3;
+console.log("c) El promedio de "+x+" "+y+" y "+z+" es de "+promedio);
