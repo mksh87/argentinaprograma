@@ -1,46 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        input:invalid {
+        background-color: pink;
+        }
+    </style>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-   
-   <script> //defino algunas variables que utilizan otras funciones
-    var equipo=[];
-    var selPlayer
-    </script>
 
-   <script> 
-        //para mostrar el listado del equipo en pantalla
-        function printList(){
-            var equipoInfo=""; //variable de listado de info de jugadores del equipo
-                for (i = 0; i< equipo.length; i++) {
-                var eq=  equipo[i]; //para cada jugador del equipo
-                equipoInfo += '<input onClick="selectPlayer()" type="radio" name="player" value="'+i+'" />' 
-                //diferencio value por jugador para ayudar a los bontones Modificar y Eliminar.
-                for (var propiedad in eq) { //para cada propiedad del jugador
-                equipoInfo += propiedad + ": " + eq[propiedad] + ' | '; 
-                }
-                equipoInfo += '</br>' 
-                //salto del renglon al final de cada jugador
-                }
-                document.getElementById("listado").innerHTML = equipoInfo; //imprime el listado en el div correspondiente
-            }
-        
-        //para los radio define el valor de selPlayer para luego eliminar o modificar
-        function selectPlayer(){
-            selPlayer= Number(document.querySelector("input[type='radio'][name=player]:checked").value);
-        }
-
-        function deletePlayer(){
-            equipo.splice(selPlayer,1);
-            printList();
-        
-                
-
-        }
-    </script>
+   <script src="equipos.js"></script>
 </head>
 <body>
 
@@ -48,11 +19,11 @@
 <form>
 <div>
 <label for="nombre">Nombre completo</label>
-<input type="text" id="nombre" name="Nombre">
+<input type="text" id="nombre" name="Nombre" minlength="2" maxlength="30" required>
 </div>
 <div>
 <label for="edad">Edad</label>
-<input type="value" id="edad" name="Edad">
+<input type="number" id="edad" name="Edad" min="15" max="99" required>
 </div>
 <div>
 <label for="posicion">Posición</label>
@@ -67,20 +38,7 @@
 </form>
 
 <script>
-showResult();  //ejecuta la función?
-
-//se llama showResult pero solo agrega el jugador al equipo, la parte de mostrar la separé
-function showResult() {
-    const form = document.querySelector('form'); //crea la variable form y ...?
-    form.addEventListener('submit', (e) => {  //listener al apretar el botón submit
-        e.preventDefault(); // Previene HTML refresh con cada clic del botón
-        const formData = new FormData(form); // Junta los resultados del formulario
-        var jugador = Object.fromEntries(formData); // edita el objeto jugador
-        equipo.push(jugador); //agrega jugador al equipo
-        console.log(equipo);
-        printList();
-        })
-}
+showResult();  //ejecuta la función?  No me dejó moverlo al archivo js
 </script>
 <div id="listado">
 </div>
