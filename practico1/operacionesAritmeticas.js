@@ -1,14 +1,9 @@
-let var1=1812;
-let var2=2023;
-let var3=1986;
-let var4=1978;
+let var1=7;
+let var2=4;
+let var3=10;
+let var4=6;
 let suma=var1+var2;
 let resta=var4-var3;
 let resultadoFinal=suma*resta;
-let esPar
-if(resultadoFinal%2===0) {
-    esPar=true
-} else{
-    esPar=false
-}
-console.log("Mis variables iniciales fueron: "+var1+", "+var2+", "+var3+" y "+var4+". La respuesta al verificar si el resultado final es par es: "+esPar);
+let esPar = (resultadoFinal%2===0);
+console.log("Mis variables iniciales fueron: %i, %i, %i y %i. La respuesta al verificar si el resultado final es par es: "+esPar,var1,var2,var3,var4);
