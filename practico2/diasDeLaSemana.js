@@ -28,7 +28,7 @@ switch (valor) {
       dia='domingo';
       break;
     default:
-      console.log('Numero invalido2'); //repetir por las dudas se me escape algún otro caso.
+      console.log('Numero invalido'); //repetir por las dudas se me escape algún otro caso.
   }
 console.log('Hoy es %s',dia);
 }
