@@ -2,7 +2,6 @@ const fs = require('fs');
     const { stringify } = require('querystring');
     let arreglo = [];
 
-
 function leerArchivo(nombreArchivo) {
     let data = fs.readFileSync(nombreArchivo, 'utf8')
 
@@ -41,25 +40,22 @@ function leerArchivo(nombreArchivo) {
     return arreglo;
 }
 
-//console.log("Clima para el día "+(Number(dia)+1)+"/"+(Number(mes)+1)+"/"+(Number(año)+1980)+":");
-//console.log(JSON.stringify(arreglo[1][1][1]));
-
 function historicMinMax(){
-leerArchivo('weather_cordoba.in');
-let min=arreglo[0][0][0].tempMin;
-let max=arreglo[0][0][0].tempMax;
-for(i=0;i<arreglo.length;i++){
-    for(j=0;j<arreglo[i].length;j++){
-        for(k=0;k<arreglo[i][j].length;k++){
-            if(min>arreglo[i][j][k].tempMin){
-                min=arreglo[i][j][k].tempMin;
-            } else if(max<arreglo[i][j][k].tempMax){
-                max=arreglo[i][j][k].tempMax;
+    leerArchivo('weather_cordoba.in');
+    let min=arreglo[0][0][0].tempMin;
+    let max=arreglo[0][0][0].tempMax;
+    for(i=0;i<arreglo.length;i++){
+        for(j=0;j<arreglo[i].length;j++){
+            for(k=0;k<arreglo[i][j].length;k++){
+                if(min>arreglo[i][j][k].tempMin){
+                    min=arreglo[i][j][k].tempMin;
+                } else if(max<arreglo[i][j][k].tempMax){
+                    max=arreglo[i][j][k].tempMax;
+                }
             }
         }
     }
-}
-return console.log("Mínimo histórico: "+min+" | Máximo histórico: "+max)
+    return console.log("Mínimo histórico: "+min+" | Máximo histórico: "+max)
 }
 
 historicMinMax()
@@ -80,27 +76,26 @@ function yearMaxTemp(){
         maxAño.push(maxTemp);
     }
     return console.log("Las temperaturas máximas por año son:\n"+JSON.stringify(maxAño));
-    }
+}
 
-    yearMaxTemp()
+yearMaxTemp()
 
-    function yearMaxRain(){
-        leerArchivo('weather_cordoba.in');
-        let yearMaxRain=[];
+function yearMaxRain(){
+    leerArchivo('weather_cordoba.in');
+    let yearMaxRain=[];
         
-        for(i=0;i<arreglo.length;i++){
-            let maxRain=arreglo[i][0][0].precipitacion;
-            for(j=0;j<arreglo[i].length;j++){
-                for(k=0;k<arreglo[i][j].length;k++){
-                    if(maxRain<arreglo[i][j][k].precipitacion){
-                        maxRain=arreglo[i][j][k].precipitacion;
-                    }
+    for(i=0;i<arreglo.length;i++){
+         let maxRain=arreglo[i][0][0].precipitacion;
+        for(j=0;j<arreglo[i].length;j++){
+            for(k=0;k<arreglo[i][j].length;k++){
+                if(maxRain<arreglo[i][j][k].precipitacion){
+                    maxRain=arreglo[i][j][k].precipitacion;
                 }
             }
-            yearMaxRain.push(maxRain);
         }
-        return console.log("Las precipitaciones máximas por año son:\n"+JSON.stringify(yearMaxRain));
-        }
+        yearMaxRain.push(maxRain);
+    }
+    return console.log("Las precipitaciones máximas por año son:\n"+JSON.stringify(yearMaxRain));
+}
     
-        yearMaxRain()
-
+yearMaxRain()
