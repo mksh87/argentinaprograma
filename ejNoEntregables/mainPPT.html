@@ -83,6 +83,8 @@
     } else {
       mensajeElement.textContent = "Seleccione una opción para poder iniciar.";
     }
+    btnComenzar=document.getElementById("btn-comenzar");
+    btnComenzar.removeAttribute('onclick');
   }
 
   function obtenerJugadaUsuario(valor) { //Devuelve elección de usuario según botón que presione.
@@ -161,6 +163,7 @@
     scorePlayer=0;
     scoreComputer=0;
     codigoElement.style.display = "none";
+    document.getElementById("btn-comenzar").setAttribute('onclick', 'comenzarJuego()');
   }
 
 </script>
